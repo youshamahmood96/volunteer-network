@@ -1,0 +1,16 @@
+.table-row{
+    font-family: Montserrat;
+}
+.remove-row{
+    display:none;
+}
+.trash{
+    width:20px;
+    height:20px;
+}
+.trash-btn{
+    padding:5px;
+    background-color:darkred;
+    border:none;
+    border-radius:6px;
+}

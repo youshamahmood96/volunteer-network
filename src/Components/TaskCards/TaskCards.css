@@ -1,0 +1,22 @@
+.task-body{
+    display:inline;
+}
+.task-cards{
+    display:inline-block;
+    margin:15px;
+    border-radius:10px;
+}
+.card-image{
+    height:300px;
+    width:250px;
+    position:relative;
+    z-index:-1;
+}
+.task-name{
+   height:40px;
+   padding-left:10px;
+   border-radius:10px;
+   color:white;
+   font-weight:bold;
+   width:100%;
+}

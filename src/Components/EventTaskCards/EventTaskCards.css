@@ -1,0 +1,25 @@
+.event-task-body{
+    display:inline;
+}
+.remove{
+    display:none;
+}
+.event-task-cards{
+    display:inline-block;
+    margin:30px;
+    border-radius:10px;
+    width:500px;
+    box-shadow: 20px 10px 10px 10px lightgrey;
+}
+.event-card-image{
+    height:175px;
+    width:150px;
+}
+.event-task-name{
+   height:40px;
+   padding-left:10px;
+   border-radius:10px;
+   color:white;
+   font-weight:bold;
+   width:100%;
+}
