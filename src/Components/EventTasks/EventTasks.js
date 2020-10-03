@@ -7,7 +7,7 @@ const EventTasks = () => {
     const[tasks,setTasks] = useState([])
     const [user, setLoggedInUser] = useContext(UserContext)
     useEffect(()=>{
-    fetch('http://localhost:5000/totalTasks?email='+user.email)
+    fetch('https://floating-beyond-39916.herokuapp.com/totalTasks?email='+user.email)
     .then(res=>res.json())
     .then(data=>setTasks(data))
 },[])

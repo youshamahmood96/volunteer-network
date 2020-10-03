@@ -5,7 +5,7 @@ const RegList = () => {
         const[tasks,setTasks] = useState([])
         
         useEffect(()=>{
-            fetch('http://localhost:5000/adminTasks')
+            fetch('https://floating-beyond-39916.herokuapp.com/adminTasks')
             .then(res=>res.json())
             .then(data=>setTasks(data))
         },[])

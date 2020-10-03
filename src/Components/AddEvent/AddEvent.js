@@ -18,7 +18,7 @@ const AddEvent = () => {
     } 
     const submit =()=>{
         console.log(task);
-        fetch('http://localhost:5000/addToRawData',{
+        fetch('https://floating-beyond-39916.herokuapp.com/addToRawData',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(task)

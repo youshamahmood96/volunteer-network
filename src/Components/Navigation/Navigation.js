@@ -10,7 +10,7 @@ const Navigation = () => {
     return (
         <div className="navigation" >
         <Navbar style={{marginBottom:'40px'}} collapseOnSelect expand="lg" bg="transparent">
-            <Navbar.Brand href="/home"> <img className="img-fluid logo" src={vnLogo} alt="logo"></img></Navbar.Brand>
+            <Link to='/'><Navbar.Brand> <img className="img-fluid logo" src={vnLogo} alt="logo"></img></Navbar.Brand></Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">

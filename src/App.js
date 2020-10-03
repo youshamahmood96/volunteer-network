@@ -13,7 +13,7 @@ import ConfirmTask from './Components/ConfirmTask/ConfirmTask';
 import Login from './Components/Login/Login';
 import EventTasks from './Components/EventTasks/EventTasks';
 import AdminPanel from './Components/AdminPanel/AdminPanel';
-import AddEvent from './Components/AddEvent/AddEvent';
+import NotFound from './NotFound/NotFound';
 
 export const UserContext = createContext();
 
@@ -43,6 +43,9 @@ function App() {
         </Route>
         <Route path='/eventTasks'>
         <EventTasks></EventTasks>
+        </Route>
+        <Route path ="*">
+          <NotFound></NotFound>
         </Route>
       </Switch>
     </Router>

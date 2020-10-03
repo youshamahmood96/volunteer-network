@@ -7,7 +7,7 @@ const EventTaskCards = (props) => {
     const{_id,name,email,selectedDate,task,image} = props.tsk;
     const deleteTask = (e) =>{
         setToggle(true)
-        fetch(`http://localhost:5000/delete/${_id}`,{
+        fetch(`https://floating-beyond-39916.herokuapp.com/delete/${_id}`,{
             method: 'DELETE',
         })
         .then(res=>res.json())
