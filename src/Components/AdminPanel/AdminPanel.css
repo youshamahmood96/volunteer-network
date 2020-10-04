@@ -45,6 +45,12 @@
   }
   
   .menu li:hover {
-    background-color: #0099cc;
+    /* background-color: #0099cc; */
     cursor:pointer
+  }
+  .toggleTrue{
+    color:#207FEE;
+  }
+  .toggleFalse{
+    color:black;
   }

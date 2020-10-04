@@ -20,10 +20,16 @@ const AdminPanel = () => {
             <div class="row">
             <div class="col-3 menu">
                 <ul>
-                <li onClick={()=>{
+                <li className={
+                    regToggle?"toggleTrue"
+                    :"toggleFalse"
+                } onClick={()=>{
                     setRegToggle(true)
                 }}><img style={{marginRight:'10px'}} src={users} alt="users"></img>Volunteer Registration List</li>
-                <li onClick={()=>{
+                <li className={
+                    regToggle?"toggleFalse"
+                    :"toggleTrue"
+                }  onClick={()=>{
                     setRegToggle(false)
                 }} ><img style={{marginRight:'10px',height:'30px',width:'30px'}} src={plus} alt="add"></img>Add Event</li>
                 </ul>
