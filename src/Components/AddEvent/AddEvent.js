@@ -1,8 +1,11 @@
-import { Grid, TextField } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import React, { useState } from 'react';
 import DateFnsUtils from '@date-io/date-fns';
+import {Col, Form } from 'react-bootstrap';
+import './Addevent.css'
+import { Link } from 'react-router-dom';
 const AddEvent = () => {
+    const[toggle,setToggle] = useState(false)
     const [task,setTask] = useState({})
     const [selectedDate, setSelectedDate] = React.useState(new Date('2020-08-18T21:11:54'));
     const handleDateChange = (date) => {
@@ -14,6 +17,7 @@ const AddEvent = () => {
     const handleBlur = (e) => {
         const newTask = {...task}
         newTask[e.target.name] = e.target.value
+        newTask["color"] = 'black'
         setTask(newTask)
     } 
     const submit =()=>{
@@ -23,42 +27,64 @@ const AddEvent = () => {
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(task)
         })
+        setToggle(true)
     }
+    console.log(task);
     return (
-        <div className="container">
-        <div className="confirm-task-form">
-                <div className="login-page-inner">
-                    <form onSubmit={submit}>
-                            <>  
-                                <TextField required onBlur={handleBlur}  autoComplete="off" style={{ marginTop: '40px' }} name='task' id="standard-basic" placeholder="Event Title" />
-                                <TextField required onBlur={handleBlur} autoComplete="off" style={{ marginTop: '33px' }} name='description' id="standard-basic" placeholder="description"/>
-                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <Grid>
-                                <KeyboardDatePicker 
-                                    style={{ fontWeight: 'bold', color: 'black',width: '460px',marginTop: '40px'}}
-                                    margin="normal"
-                                    disableFuture
-                                    id="date-picker-dialog"
-                                    label="Date"
-                                    format="MM/dd/yyyy"
-                                    value={selectedDate}
-                                    onChange={handleDateChange}
-                                    KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                    }}
-                                />
-                                </Grid>
-                                </MuiPickersUtilsProvider>
-                                <TextField required onBlur={handleBlur} autoComplete="off" style={{ marginTop: '33px' }} name='image' id="standard-basic" placeholder="Upload Image Url"/>
-                                <TextField required onBlur={handleBlur} autoComplete="off" style={{ marginTop: '33px' }} name='color' id="standard-basic" placeholder="Set Event Color"/>
-                                 
-                            </>
-                        
-                       
-                    </form>
-                    <button onClick={submit} className="submit-btn">Submit</button>
-                </div>
-        </div>
+        <div className="event-container" >
+        <Form className="event-form">
+  <Form.Row>
+    <Form.Group style={{marginRight: '50px'}} as={Col} >
+      <Form.Label>Event Title</Form.Label>
+      <Form.Control onBlur={handleBlur} type="text" name="task" placeholder="Enter title" />
+    </Form.Group>
+
+    <Form.Group as={Col} >
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    
+    <KeyboardDatePicker 
+        style={{ fontWeight: 'bold', color: 'black'}}
+        margin="normal"
+        disableFuture
+        id="date-picker-dialog"
+        label="Date"
+        format="MM/dd/yyyy"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+        'aria-label': 'change date',
+        }}
+    />
+    
+    </MuiPickersUtilsProvider>
+    </Form.Group>
+  </Form.Row>
+
+  
+
+  <Form.Row>
+    <Form.Group as={Col} style={{marginRight: '50px'}} >
+    <Form.Label>Description</Form.Label>
+    <Form.Control onBlur={handleBlur} name="description" placeholder="Enter description" as="textarea" rows={3}  />
+    </Form.Group> 
+
+    <Form.Group as={Col} >
+      <Form.Label>Image URL</Form.Label>
+      <Form.Control onBlur={handleBlur} placeholder="Enter Image URL" name="image"/>
+    </Form.Group>
+  </Form.Row>
+
+
+  
+</Form>
+{
+    toggle?(
+        <button className="add-event-btn" disabled>Submitted</button>
+    ):
+    (
+        <button onClick={submit} className="add-event-btn">Submit</button>
+    )
+}
         </div>
     );
 };

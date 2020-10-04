@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
-import RenderVolunteers from '../RenderVolunteers/RenderVolunteers'
+import RenderVolunteers from '../RenderVolunteers/RenderVolunteers';
+import './RegList.css'
 const RegList = () => {
         const[tasks,setTasks] = useState([])
         

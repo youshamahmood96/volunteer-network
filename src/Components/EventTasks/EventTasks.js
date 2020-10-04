@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import EventTaskCards from '../EventTaskCards/EventTaskCards';
 import Navigation from '../Navigation/Navigation';

@@ -1,0 +1,11 @@
+Table{
+    background-color: white;
+    border-radius:10px;
+    padding:20px;
+}
+thead{
+    background-color:#F5F6FA;
+}
+tr,td,th{
+    border:none !important;
+}

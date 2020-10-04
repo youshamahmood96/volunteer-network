@@ -1,12 +1,13 @@
 import React, { useContext} from 'react';
 import { Button, Nav, Navbar} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import vnLogo from '../../logos/vnLogo.png';
 import './Navigation.css';
 const Navigation = () => {
     const [user, setLoggedInUser] = useContext(UserContext)
-    
+    const location = useLocation()
+    console.log(location.pathname);
     return (
         <div className="navigation" >
         <Navbar style={{marginBottom:'40px'}} collapseOnSelect expand="lg" bg="transparent">
@@ -16,21 +17,26 @@ const Navigation = () => {
                 <Nav className="mr-auto">
                 </Nav>
                 <Nav>
-                <Nav.Link style={{marginRight:'30px'}}>Home</Nav.Link>
-                <Nav.Link style={{marginRight:'30px'}}>Donation</Nav.Link>
-                <Nav.Link style={{marginRight:'30px'}}>Events</Nav.Link>
-                <Nav.Link style={{marginRight:'30px'}}>Blog</Nav.Link>
+                <Nav.Link className="navigation-links">Home</Nav.Link>
+                <Nav.Link className="navigation-links">Donation</Nav.Link>
+                <Nav.Link className="navigation-links">Events</Nav.Link>
+                <Nav.Link className="navigation-links">Blog</Nav.Link>
                 {
                     user?.name?
                     (
-                        <Nav.Link style={{marginRight:'30px'}}>{user.name}</Nav.Link>
+                        <Nav.Link className="navigation-links">{user.name}</Nav.Link>
                     ):
                     (<Link to='/login'>
-                        <Button style={{marginRight:'30px'}}>Register</Button>
+                        <button className="navigation-links register-btn">Register</button>
                     </Link>
                     )
                 }
-                <Link to ='/adminPanel'><Button style={{marginRight:'30px'}}>Admin</Button></Link>
+                {
+                    location.pathname ==="/eventTasks"? ''
+                    :(
+                        <Link to ='/adminPanel'><button className="navigation-links admin-btn">Admin</button></Link>
+                    )
+                }
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
