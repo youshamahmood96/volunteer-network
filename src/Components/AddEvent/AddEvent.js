@@ -4,7 +4,9 @@ import DateFnsUtils from '@date-io/date-fns';
 import {Col, Form } from 'react-bootstrap';
 import './Addevent.css'
 import { Link } from 'react-router-dom';
+import upload from '../../logos/upload.png'
 const AddEvent = () => {
+    const[uploaded,setUploaded] = useState(false)
     const[toggle,setToggle] = useState(false)
     const [task,setTask] = useState({})
     const [selectedDate, setSelectedDate] = React.useState(new Date('2020-08-18T21:11:54'));
@@ -21,7 +23,6 @@ const AddEvent = () => {
         setTask(newTask)
     } 
     const submit =()=>{
-        console.log(task);
         fetch('https://floating-beyond-39916.herokuapp.com/addToRawData',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -29,7 +30,12 @@ const AddEvent = () => {
         })
         setToggle(true)
     }
-    console.log(task);
+    const uploadImage =()=>{
+        setUploaded(true)
+        const newTask = {...task}
+        newTask["image"] = 'https://i.ibb.co/m8zGdw2/newBooks.png'
+        setTask(newTask)
+    }
     return (
         <div className="event-container" >
         <Form className="event-form">
@@ -69,8 +75,14 @@ const AddEvent = () => {
     </Form.Group> 
 
     <Form.Group as={Col} >
-      <Form.Label>Image URL</Form.Label>
-      <Form.Control onBlur={handleBlur} placeholder="Enter Image URL" name="image"/>
+      <Form.Label>Banner</Form.Label><br></br>
+      {
+          uploaded?(
+            <p>Image Uploaded!</p>
+          ):(
+            <div onClick={uploadImage} className='upload-image-btn' > <img src={upload} className="upload-logo" alt="upload"></img> Upload Image</div>
+          )
+      }
     </Form.Group>
   </Form.Row>
 

@@ -7,7 +7,6 @@ import './Navigation.css';
 const Navigation = () => {
     const [user, setLoggedInUser] = useContext(UserContext)
     const location = useLocation()
-    console.log(location.pathname);
     return (
         <div className="navigation" >
         <Navbar style={{marginBottom:'40px'}} collapseOnSelect expand="lg" bg="transparent">
@@ -17,7 +16,7 @@ const Navigation = () => {
                 <Nav className="mr-auto">
                 </Nav>
                 <Nav>
-                <Nav.Link className="navigation-links">Home</Nav.Link>
+                <Nav.Link href='/' className="navigation-links">Home</Nav.Link>
                 <Nav.Link className="navigation-links">Donation</Nav.Link>
                 <Nav.Link className="navigation-links">Events</Nav.Link>
                 <Nav.Link className="navigation-links">Blog</Nav.Link>
