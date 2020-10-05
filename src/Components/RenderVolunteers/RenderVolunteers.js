@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './RenderVolunteers.css';
 import trash from '../../logos/trash.png'
 const RenderVolunteers = (props) =>{
+    
+    const {_id,name,email,task,confirmedDate} = props.tsk
     const[toggle,setToggle] = useState(false)
-    const deleteThisTask = (e) =>{
+    const deleteThisTask = () =>{
         setToggle(true)
-        fetch(`https://floating-beyond-39916.herokuapp.com/delete/${props._id}`,{
+        fetch(`https://floating-beyond-39916.herokuapp.com/delete/${_id}`,{
             method: 'DELETE',
         })
         .then(res=>res.json())
@@ -18,11 +20,11 @@ const RenderVolunteers = (props) =>{
             toggle?"remove"
             :"table-row"
         } >
-        <td>{props.tsk.name}</td>
-        <td>{props.tsk.email}</td>
-        <td>{props.tsk.selectedDate}</td>
-        <td>{props.tsk.task}</td>
-        <td><button className="trash-btn" onClick={deleteThisTask}><img className="trash" src={trash} alt="trash"></img></button></td>
+        <td>{name}</td>
+        <td>{email}</td>
+        <td>{confirmedDate}</td>
+        <td>{task}</td>
+        <td><button className="trash-btn" onClick={deleteThisTask} ><img className="trash" src={trash} alt="trash"></img></button></td>
         </tr>
     )
 }

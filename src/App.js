@@ -14,6 +14,7 @@ import Login from './Components/Login/Login';
 import EventTasks from './Components/EventTasks/EventTasks';
 import AdminPanel from './Components/AdminPanel/AdminPanel';
 import NotFound from './NotFound/NotFound';
+import ConfirmTaskMessage from './Components/ConfirmTaskMessage/ConfirmTaskMessage';
 
 export const UserContext = createContext();
 
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path='/eventTasks'>
         <EventTasks></EventTasks>
+        </Route>
+        <Route path='/c'>
+          <ConfirmTaskMessage></ConfirmTaskMessage>
         </Route>
         <Route path ="*">
           <NotFound></NotFound>

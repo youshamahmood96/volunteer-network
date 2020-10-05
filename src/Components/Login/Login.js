@@ -53,7 +53,7 @@ const Login = () => {
             <img className="google-logo" src={google} alt="google-logo"></img>
             <p>Continue With Google</p>
             </div>
-            <p style={{textAlign:'center',fontFamily:'Montserrat'}} >Dont Have an Account? <Link>Create an Account</Link></p>
+            <p style={{textAlign:'center',fontFamily:'Montserrat'}} >Dont Have an Account? <span style={{color:'blue',textDecoration:'underline',cursor:'pointer'}}>Create an Account</span></p>
             </div>
         </div>
     );

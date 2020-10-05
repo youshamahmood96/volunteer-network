@@ -17,7 +17,7 @@ const EventTasks = () => {
             <Navigation></Navigation>
             <div className="event-task">
             {
-                tasks.map(tsk=><EventTaskCards tsk={tsk}></EventTaskCards>)
+                tasks.map(tsk=><EventTaskCards key={tsk._id} tsk={tsk}></EventTaskCards>)
             }
             </div>
         </div>

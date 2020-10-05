@@ -25,7 +25,7 @@ const RegList = () => {
         </thead>
         <tbody>
           {
-              tasks.map(tsk=><RenderVolunteers tsk={tsk}></RenderVolunteers>)
+              tasks.map(tsk=><RenderVolunteers key={tsk._id} tsk={tsk}></RenderVolunteers>)
           }
         </tbody>
       </Table>

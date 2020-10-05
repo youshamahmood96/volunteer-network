@@ -13,6 +13,9 @@ import {
 } from '@material-ui/pickers';
 import vnLogo from '../../logos/vnLogo.png'
 import { TextareaAutosize } from '@material-ui/core';
+import { getDate, getMonth } from 'date-fns';
+import { getYear } from 'date-fns/esm';
+import ConfirmTaskMessage from '../ConfirmTaskMessage/ConfirmTaskMessage';
 
 const ConfirmTask = () => {
     const [user, setLoggedInUser] = useContext(UserContext)
@@ -23,10 +26,56 @@ const ConfirmTask = () => {
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
+    const day =getDate(selectedDate)
+    let month = getMonth(selectedDate)
+    const year = getYear(selectedDate)
+
+    
+    switch (month) {
+        case 1:
+            month = 'Jan'
+            break;
+        case 2:
+            month = 'Feb'
+            break;
+            case 3:
+            month = 'March'
+            break;
+            case 4:
+            month = 'April'
+            break;
+            case 5:
+            month = 'May'
+            break;
+            case 6:
+            month = 'Jun'
+            break;
+            case 7:
+            month = 'July'
+            break;
+            case 8:
+            month = 'Aug'
+            break;
+            case 9:
+            month = 'Sept'
+            break;
+            case 10:
+            month = 'Oct'
+            break;
+            case 11:
+            month = 'Nov'
+            break;
+            case 12:
+            month = 'Dec'
+            break;
+            default:
+            month = "Jan";
+    }
+    const confirmedDate= `${day} ${month} , ${year}`
     const task = selectedTask[0]?.task
     const image = selectedTask[0]?.image
     const description = selectedTask[0]?.description
-    const taskSummary = {...user,selectedDate,task,description,image}
+    const taskSummary = {...user,confirmedDate,task,description,image}
     const submit =()=>{
         fetch('https://floating-beyond-39916.herokuapp.com/addTask',{
             method: 'POST',
@@ -42,8 +91,8 @@ const ConfirmTask = () => {
                     <h3 className='login-page-title'>Register as a Volunteer</h3>
                     <form>
                             <>
-                                <TextField required  autoComplete="off" style={{ marginTop: '40px' }} name='first' id="standard-basic" value={user?.name}/>
-                                <TextField required autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={user?.email}/>
+                                <TextField autoComplete="off" style={{ marginTop: '40px' }} name='first' id="standard-basic" value={user?.name}/>
+                                <TextField autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={user?.email}/>
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <Grid>
                                 <KeyboardDatePicker 
@@ -62,14 +111,17 @@ const ConfirmTask = () => {
                                 </MuiPickersUtilsProvider>
                                 <TextField
                                 multiline
-                                required autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={description}/>
-                                <TextField required autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={selectedTask[0]?.task}/>
+                                 autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={description}/>
+                                <TextField autoComplete="off" style={{ marginTop: '33px' }} name='second' id="standard-basic" value={selectedTask[0]?.task}/>
 
                             </>
                         
                        
                     </form>
-                    <Link to='/eventTasks'><button onClick={submit} className="submit-btn" >Registration</button></Link>
+                    <Link to='/c'><button onClick={submit} className="submit-btn" >Registration</button></Link>
+                    <div className="remove">
+                    <ConfirmTaskMessage  tsk={taskSummary} ></ConfirmTaskMessage>
+                    </div>
                 </div>
         </div>
         </div>
