@@ -12,7 +12,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import vnLogo from '../../logos/vnLogo.png'
-import { TextareaAutosize } from '@material-ui/core';
 import { getDate, getMonth } from 'date-fns';
 import { getYear } from 'date-fns/esm';
 import ConfirmTaskMessage from '../ConfirmTaskMessage/ConfirmTaskMessage';
@@ -29,43 +28,43 @@ const ConfirmTask = () => {
     const day =getDate(selectedDate)
     let month = getMonth(selectedDate)
     const year = getYear(selectedDate)
-
+    console.log(month)
     
     switch (month) {
-        case 1:
+        case 0:
             month = 'Jan'
             break;
-        case 2:
+        case 1:
             month = 'Feb'
             break;
-            case 3:
+            case 2:
             month = 'March'
             break;
-            case 4:
+            case 3:
             month = 'April'
             break;
-            case 5:
+            case 4:
             month = 'May'
             break;
-            case 6:
+            case 5:
             month = 'Jun'
             break;
-            case 7:
+            case 6:
             month = 'July'
             break;
-            case 8:
+            case 7:
             month = 'Aug'
             break;
-            case 9:
+            case 8:
             month = 'Sept'
             break;
-            case 10:
+            case 9:
             month = 'Oct'
             break;
-            case 11:
+            case 10:
             month = 'Nov'
             break;
-            case 12:
+            case 11:
             month = 'Dec'
             break;
             default:
