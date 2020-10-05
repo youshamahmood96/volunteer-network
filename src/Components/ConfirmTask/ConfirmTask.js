@@ -49,7 +49,6 @@ const ConfirmTask = () => {
                                 <KeyboardDatePicker 
                                     style={{ fontWeight: 'bold', color: 'black',width: '460px',marginTop: '40px'}}
                                     margin="normal"
-                                    disableFuture
                                     id="date-picker-dialog"
                                     label="Date"
                                     format="MM/dd/yyyy"
