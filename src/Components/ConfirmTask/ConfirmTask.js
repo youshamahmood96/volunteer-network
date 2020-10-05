@@ -117,7 +117,7 @@ const ConfirmTask = () => {
                         
                        
                     </form>
-                    <Link to='/c'><button onClick={submit} className="submit-btn" >Registration</button></Link>
+                    <Link to='/confirmationMessage'><button onClick={submit} className="submit-btn" >Registration</button></Link>
                     <div className="remove">
                     <ConfirmTaskMessage  tsk={taskSummary} ></ConfirmTaskMessage>
                     </div>

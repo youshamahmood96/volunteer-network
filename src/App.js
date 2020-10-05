@@ -45,7 +45,7 @@ function App() {
         <Route path='/eventTasks'>
         <EventTasks></EventTasks>
         </Route>
-        <Route path='/c'>
+        <Route path='/confirmationMessage'>
           <ConfirmTaskMessage></ConfirmTaskMessage>
         </Route>
         <Route path ="*">
